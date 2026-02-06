@@ -1,5 +1,5 @@
 var ShkToken = artifacts.require("./ShkToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(ShkToken);
+  deployer.deploy(ShkToken , 1000000);
 };

@@ -7,6 +7,12 @@ contract ShkToken {
     string public standard = "Shk Token v1.0";
     uint public totalSupply;
 
+    event Transfer(
+        address indexed _from, 
+        address indexed _to, 
+        uint256 _value
+    );
+
     mapping(address => uint256) public balanceOf;
 
     constructor(uint256 _initialSupply) public {
@@ -19,6 +25,8 @@ contract ShkToken {
         require(balanceOf[msg.sender] >= _value, "Insufficient balance");
         balanceOf[msg.sender] -= _value; // Subtract from sender's balance
         balanceOf[_to] += _value; // Add to recipient's balance
+        
+        Transfer(msg.sender, _to , _value);
         return true;
     }
 
