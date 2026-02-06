@@ -1,5 +1,6 @@
 var ShkToken = artifacts.require("./ShkToken.sol");
 
+
 contract('ShkToken', function (accounts) {
     var tokenInstance;
 
