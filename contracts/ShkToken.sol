@@ -46,4 +46,17 @@ contract ShkToken {
         return true;
     }
 
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(_value <= balanceOf[_from], "Insufficient balance");
+        require(_value <= allowance[_from][msg.sender], "Allowance exceeded");
+
+        balanceOf[_from] -= _value; // Subtract from sender's balance
+        balanceOf[_to] += _value; // Add to recipient's balance
+        allowance[_from][msg.sender] -= _value; // Subtract from the sender's allowance
+
+        Transfer(_from, _to, _value);
+        return true;
+    }
+
 }
