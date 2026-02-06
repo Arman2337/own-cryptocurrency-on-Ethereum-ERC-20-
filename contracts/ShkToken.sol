@@ -13,7 +13,14 @@ contract ShkToken {
         uint256 _value
     );
 
+    event Approval(
+        address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
+
     mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
 
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply; // Assign all tokens to the contract deployer
@@ -25,8 +32,17 @@ contract ShkToken {
         require(balanceOf[msg.sender] >= _value, "Insufficient balance");
         balanceOf[msg.sender] -= _value; // Subtract from sender's balance
         balanceOf[_to] += _value; // Add to recipient's balance
-        
+
         Transfer(msg.sender, _to , _value);
+        return true;
+    }
+
+
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+
+        allowance[msg.sender][_spender] = _value;
+
+        Approval(msg.sender, _spender, _value);
         return true;
     }
 
