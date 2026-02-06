@@ -1,0 +1,17 @@
+{
+    "name": "23it119-coin",
+    "version": "1.0.0",
+    "description": "Shk Token Sale ICO",
+    "main": "truffle-config.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "dev": "lite-server"
+    },
+    "author": "Arman",
+    "license": "ISC",
+    "devDependencies": {
+        "lite-server": "^2.3.0"
+    }
+}

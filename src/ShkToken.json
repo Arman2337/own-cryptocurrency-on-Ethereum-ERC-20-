@@ -5301,12 +5301,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xc0E2C35F71Ff70c37562542afFf7F5E77181B81D",
-      "transactionHash": "0x2b436c726703a1883aeb67f2bb9c82cfcc7ceca01f6b7cf5938dfbad692c1868"
+      "address": "0x864CB11A0CA55fB29BEcc74C9660e779e7073294",
+      "transactionHash": "0x0b6feb008d41ff01c27f127c47eb8251af0dbaecc50263cb871bd0e64581f8c6"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2026-02-06T11:49:10.865Z",
+  "updatedAt": "2026-02-06T10:47:54.232Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
