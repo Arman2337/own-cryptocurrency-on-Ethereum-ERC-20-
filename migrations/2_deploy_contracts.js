@@ -1,10 +1,19 @@
-var ShkToken = artifacts.require("./ShkToken.sol");
-var ShkTokenSale = artifacts.require("./ShkTokenSale.sol");
+var ShkToken = artifacts.require("ShkToken");
+var ShkTokenSale = artifacts.require("ShkTokenSale");
 
-module.exports = function(deployer) {
-  deployer.deploy(ShkToken , 1000000).then(function() {
-    // Token price is 0.001 Ether
-    var tokenPrice = 1000000000000000;
-    return deployer.deploy(ShkTokenSale, ShkToken.address, tokenPrice);
-  });
+module.exports = async function(deployer, network, accounts) {
+  // Deploy token with 1,000,000 supply
+  await deployer.deploy(ShkToken, 1000000);
+  const token = await ShkToken.deployed();
+
+  // Token price = 0.001 ETH
+  const tokenPrice = web3.utils.toWei("0.001", "ether");
+
+  // Deploy token sale
+  await deployer.deploy(ShkTokenSale, token.address, tokenPrice);
+  const sale = await ShkTokenSale.deployed();
+
+  // 🔥 MOST IMPORTANT LINE 🔥
+  // Transfer tokens from admin → sale contract
+  await token.transfer(sale.address, 750000);
 };
